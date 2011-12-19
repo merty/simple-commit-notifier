@@ -35,6 +35,7 @@ if ( ! $_POST['payload'] )
 // Path to the file that holds the email adresses we will send the email to
 $contacts_file = "contacts";
 
+<<<<<<< HEAD
 // Path to the file that holds the footer HTML we will append to the email
 $footer_html_file = "footer.html";
 
@@ -53,10 +54,19 @@ $reply_to = "";
 // The sender email address
 $sender = "";
 
+=======
+// The sender email address
+$sender = "";
+
+// The reply-to email address
+$reply_to = "";
+
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
 /**
  * Please do not touch anything below unless you know what you're doing
  */
 
+<<<<<<< HEAD
 // Decode the payload
 $payload = json_decode( $_POST['payload'], true );
 
@@ -81,6 +91,8 @@ if ( $f ) {
 if ( ! in_array( $repository['name'], $trusted_repos ) )
     exit();
 
+=======
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
 // To store the list of email addresses we will send the email to
 $to = "";
 
@@ -96,6 +108,16 @@ if ( $f ) {
 
 $to = substr( $to, 0, -2 );
 
+<<<<<<< HEAD
+=======
+// Decode the payload
+$payload = json_decode( $_POST['payload'], true );
+
+// Just for convenience
+$repository = $payload['repository'];
+$commits = $payload['commits'];
+
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
 // The number of commits to process
 $num_commits = count( $commits );
 
@@ -103,15 +125,22 @@ $num_commits = count( $commits );
 $more = "";
 if ( $num_commits > 1 )
     $more .= " (+" . ($num_commits - 1) . " more)";
+<<<<<<< HEAD
 else
     $reply_to = $commits['0']['author']['email'];
 
 // Set the subject of the email
 $subject = "[{$repository['name']}] " . substr( str_replace( "\n", " ", $commits['0']['message'] ), 0, $char_limit ) . "...{$more}";
+=======
+
+// Set the subject of the email
+$subject = "[{$repository['name']}] {$commits['0']['message']}{$more}";
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
 
 // Form the email content by going through all of the commits
 $message = "";
 
+<<<<<<< HEAD
 // Open the header HTML file to prepend the header to the email
 $f = @fopen( $header_html_file, "r" );
 
@@ -121,15 +150,22 @@ if ( $f ) {
     fclose( $f );
 }
 
+=======
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
 foreach ( $commits as $c ) {
     $message .= "<strong>Author:</strong> {$c['author']['name']} <<a href=\"mailto:{$c['author']['email']}\">{$c['author']['email']}</a>><br />";
     $message .= "<strong>Date:</strong> {$c['timestamp']}<br />";
     $message .= "<strong>URL:</strong> {$c['url']}<br /><br />";
+<<<<<<< HEAD
     $message .= str_replace( "\n", "<br />", $c['message'] ) . "<br /><br />";
+=======
+    $message .= "{$c['message']}<br /><br />";
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
     if ( $num_commits > 1 )
         $message .= "<hr /><br /><br />";
 }
 
+<<<<<<< HEAD
 // Open the footer HTML file to append the footer to the email
 $f = @fopen( $footer_html_file, "r" );
 
@@ -139,6 +175,8 @@ if ( $f ) {
     fclose( $f );
 }
 
+=======
+>>>>>>> 5b9d18e23ad74f7f22d1b4cd75cb20b234ea7cd9
 // Header information
 $headers  = "From: {$sender}\n";
 $headers .= "Reply-To: {$reply_to}\n";
