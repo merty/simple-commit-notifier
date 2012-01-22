@@ -29,7 +29,7 @@ if ( ! $_POST['payload'] )
     exit();
 
 /**
- * Please fill in the following 3 settings
+ * Please make sure that the following 7 settings are correctly set for you
  */
 
 // Path to the file that holds the email adresses we will send the email to
