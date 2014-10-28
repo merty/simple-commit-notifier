@@ -150,5 +150,3 @@ $parameters = "-f{$sender}";
 
 // Finally, send the email
 mail( $to, $subject, $message, $headers, $parameters );
-
-?>
