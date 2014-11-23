@@ -1,6 +1,8 @@
 Simple Commit Notifier
 ======================
 
+[![Code Climate](https://codeclimate.com/github/merty/simple-commit-notifier/badges/gpa.svg)](https://codeclimate.com/github/merty/simple-commit-notifier)
+
 Simple Commit Notifier is a Post-Receive URL implementation to send emails containing commit information.
 
 Usage
